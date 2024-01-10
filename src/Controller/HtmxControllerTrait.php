@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Seaworn\HtmxBundle\Controller;
 
-use \Seaworn\HtmxBundle\Response\{HtmxResponse, HtmxClientRedirectResponse, HtmxClientRefreshResponse, HtmxStopPollingResponse};
+use Seaworn\HtmxBundle\Response\{HtmxResponse, HtmxClientRedirectResponse, HtmxClientRefreshResponse, HtmxStopPollingResponse};
 
 /**
  * Helpers for htmx features in controllers
@@ -52,7 +52,7 @@ trait HtmxControllerTrait {
             return parent::renderBlock($view, $block, $parameters, $response);
         }
         if (!$this->container->has('twig')) {
-            throw new \LogicException('You cannot use the "renderView" method if the Twig Bundle is not available. Try running "composer require symfony/twig-bundle".');
+            throw new \LogicException('You cannot use the "renderBlock" method if the Twig Bundle is not available. Try running "composer require symfony/twig-bundle".');
         }
         $content = $this->container->get('twig')->load($view)->renderBlock($block, $parameters);
         $response->setContent($content);
